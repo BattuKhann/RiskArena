@@ -3,6 +3,12 @@
 struct Xoshiro256 {
     uint64_t s[4];
 
+    using result_type = uint64_t;
+    static constexpr uint64_t min() { return 0; }
+    static constexpr uint64_t max() { return UINT64_MAX; }
+    
+    inline uint64_t operator()() { return next(); }
+    
     static inline uint64_t rotl(const uint64_t x, int k) {
         return (x << k) | (x >> (64 - k));
     }
