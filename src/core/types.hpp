@@ -20,9 +20,9 @@ enum GamePhase : uint8_t{
 
 struct Action{
     ActionType type;
-    uint64_t SourceID; //Doubles as # of Infantry Cards
-    uint64_t TargetID; //Doubles as # of Cavalry Cards
-    uint64_t Amount; //Doubles as # of Artillery Cards
+    uint64_t SourceID;
+    uint64_t TargetID;
+    uint64_t Amount; //Doubles as Cards Chosen to Draw
 };
 
 struct Result{
@@ -62,12 +62,11 @@ struct MapState{
     uint16_t territoryTroops[MAX_TERRITORIES];
     uint16_t troopsToPlace;
 
+    uint16_t globalSetBonus;
+    uint16_t turn;
+
     uint8_t aliveFlags = 0x3F;
     uint8_t currPlayer;
     GamePhase phase = GamePhase::SETUP;
     bool hasConqueredThisTurn;
-    int globalSetBonus;
-    int turn;
-
-    Card gameDeck[MAX_TERRITORIES];
 };
